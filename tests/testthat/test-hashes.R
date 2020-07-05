@@ -75,15 +75,15 @@ test_that("colspace", {
   ) # hexagon
   expect_equal(
     digest::sha1(colspace(vismodel(flowers, visual = "cie10"), space = "ciexyz"), digits = 4),
-    "0fdcf15ed6a2312de4617f1fb4bdeece66bafe77"
+    "99684793a0db286562bff697354496ac3ef0abfb"
   ) # ciexyz
   expect_equal(
     digest::sha1(colspace(vismodel(flowers, visual = "cie10"), space = "cielab"), digits = 4),
-    "e17c94cbcf341840b5f46c3f78311cd86031f5c3"
+    "55961f7e22403fba0c0c658868918722befb5f2c"
   ) # cielab
   expect_equal(
     digest::sha1(colspace(vismodel(flowers, visual = "cie10"), space = "cielch"), digits = 4),
-    "8fd1fa8eb0130a71095e6ae1a8d460ffe2f207db"
+    "e0ad250b695e97c9ffb53c0303f19d908e33d033"
   ) # cielch
 
   # sha1() has no method for the 'table' class
@@ -96,29 +96,29 @@ test_that("colspace", {
 
 test_that("voloverlap()", {
   skip_on_cran()
-  
+
   data(sicalis)
   tcs.sicalis.C <- subset(colspace(vismodel(sicalis)), "C")
   tcs.sicalis.T <- subset(colspace(vismodel(sicalis)), "T")
   tcs.sicalis.B <- subset(colspace(vismodel(sicalis)), "B")
-  
+
   expect_equal(
     digest::sha1(voloverlap(tcs.sicalis.T, tcs.sicalis.B, type = "convex"), digits = 4),
     "3717422024683f1e3e1bd8dbfe832b177147afce"
   )
-  
+
   expect_equal(
     digest::sha1(voloverlap(tcs.sicalis.T, tcs.sicalis.C, type = "convex"), digits = 4),
     "69b323778e83f2e43a91d60326f1e726eb2cd0e4"
   )
   voloverlap(tcs.sicalis.T, tcs.sicalis.B, type = "alpha", avalue = 0.5, nsamp = 10000)
-  
+
   set.seed(20200517)
   expect_equal(
     digest::sha1(voloverlap(tcs.sicalis.T, tcs.sicalis.B, type = "alpha", avalue = 0.5, nsamp = 10000), digits = 4),
     "7932522b35c2c59365fe7c342f367f8ec35f601a"
   )
-  
+
 })
 
 test_that("processing & general", {
@@ -129,7 +129,7 @@ test_that("processing & general", {
   # Sensdata
   expect_known_hash(
     expect_silent(sensdata(illum = "all", bkg = "all", trans = "all")),
-    "b845b697e6"
+    "ede7ead317"
   )
 
   # Peakshape
@@ -220,7 +220,7 @@ test_that("vismodel", {
   )
   expect_equal(
     digest::sha1(vismodel(flowers, visual = "cie10"), digits = 4),
-    "a7e26d5d074354df757ab55916a6cfdd9549b18a"
+    "fc5f5f2f11fefdcff1bbdd264e28d520f0812712"
   )
 
   # Attributes
